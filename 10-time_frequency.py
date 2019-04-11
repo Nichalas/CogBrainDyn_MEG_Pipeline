@@ -11,15 +11,12 @@ is used to save time.
 
 import os.path as op
 import numpy as np
+import matplotlib.pyplot as plt
 
 import mne
 from mne.parallel import parallel_func
 
 import config
-
-freqs = np.arange(10, 40)
-n_cycles = freqs / 3.
-
 
 def run_time_frequency(subject):
     print("processing subject: %s" % subject)
@@ -34,7 +31,7 @@ def run_time_frequency(subject):
     for condition in config.time_frequency_conditions:
         this_epochs = epochs[condition]
         power, itc = mne.time_frequency.tfr_morlet(
-            this_epochs, freqs=freqs, return_itc=True, n_cycles=n_cycles)
+            this_epochs, freqs=config.freqs, return_itc=True, n_cycles=config.n_cycles)
 
         power.save(
             op.join(meg_subject_dir, '%s_%s_power_%s-tfr.h5'
@@ -44,7 +41,13 @@ def run_time_frequency(subject):
             op.join(meg_subject_dir, '%s_%s_itc_%s-tfr.h5'
                     % (config.study_name, subject, 
                        condition.replace(op.sep, ''))), overwrite=True)
+        if config.plot: 
+            
+            power.plot_topo(baseline=config.baseline, mode='logratio', title=('Average power  ' + str(condition)))
 
+            power.plot_joint(baseline=config.baseline, mode='mean', tmin=config.tmin, tmax=config.tmax,title=('Mean Power of ' + str(condition)))
 
 parallel, run_func, _ = parallel_func(run_time_frequency, n_jobs=config.N_JOBS)
 parallel(run_func(subject) for subject in config.subjects_list)
+
+

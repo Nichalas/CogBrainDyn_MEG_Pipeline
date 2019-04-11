@@ -26,7 +26,7 @@ plot = True
 # Let's set the `study path`` where the data is stored on your system
 # study_path = '../MNE-sample-data/'
 # on windows: study_path = '\Users\sophie\repos\ExampleData\'
-study_path = '/Users/sophie/repos/ExampleData/'
+study_path = 'C://Users//Nikolas//Dynacomp_LocalizerData'
 
 # The ``subjects_dir`` and ``meg_dir`` for reading anatomical and MEG files.
 subjects_dir = os.path.join(study_path, 'subjects')
@@ -230,7 +230,10 @@ decoding_n_splits = 5
 # TIME-FREQUENCY
 # --------------
 #
-time_frequency_conditions = ['Auditory/Left']
+freqs = np.arange(10, 40)
+n_cycles = freqs / 3.
+
+time_frequency_conditions = ['incoherent_1', 'incoherent_2', 'coherent_down', 'coherent_up']
 
 ###############################################################################
 # SOURCE SPACE PARAMETERS
