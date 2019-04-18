@@ -33,7 +33,7 @@ plot = False
 # or
 # >>> study_path = '/Users/sophie/repos/ExampleData/'
 
-study_path = 'data/'
+study_path = 'C:\\Users\\Nikolas\\Dynacomp_LocalizerData'
 
 # ``subjects_dir`` : str
 #   The ``subjects_dir`` contains the MRI files for all subjects.
@@ -62,8 +62,8 @@ study_name = 'Localizer'
 #   subjects_list = ['SB01']
 
 # To use all subjects use
-subjects_list = ['SB01', 'SB02', 'SB04', 'SB05', 'SB06', 'SB07',
-                 'SB08', 'SB09', 'SB10', 'SB11', 'SB12']
+#subjects_list = ['SB01', 'SB02', 'SB04', 'SB05', 'SB06', 'SB07',
+#                'SB08', 'SB09', 'SB10', 'SB11', 'SB12']
 # else for speed and fast test you can use:
 
 subjects_list = ['SB01']
@@ -238,11 +238,11 @@ cal_files_path = os.path.join(study_path, 'system_calibration_files')
 
 # ``mf_ctc_fname``  : str
 #    Path to the FIF file with cross-talk correction information. 
-mf_ctc_fname = os.path.join(cal_files_path, 'ct_sparse_nspn.fif')
+mf_ctc_fname = os.path.join(cal_files_path, 'NeuroSpin_ct_sparse.fif')
 
 # ``mf_cal_fname``  : str
 #   Path to the '.dat' file with fine calibration coefficients. 
-mf_cal_fname = os.path.join(cal_files_path, 'sss_cal_nspn.dat')
+mf_cal_fname = os.path.join(cal_files_path, 'NeuroSpin_sss_cal.dat')
 
 
 # ``mf_reference_run``  : integer

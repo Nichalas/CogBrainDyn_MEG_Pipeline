@@ -38,9 +38,10 @@ def run_events(subject):
 
         if config.trigger_time_shift:
             events = mne.event.shift_time_events(events,
-                                                 np.unique(events[:, 2]),
-                                                 config.trigger_time_shift,
-                                                 raw.info['sfreq'])
+                                                 ids=None,
+                                                 tshift=config.trigger_time_shift,
+                                                 sfreq=raw.info['sfreq'])
+                                                 
 
         print("Input: ", raw_fname_in)
         print("Output: ", eve_fname_out)
